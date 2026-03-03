@@ -1,7 +1,11 @@
 <div align="center">
   <img src="https://img.shields.io/badge/Identity%20Reconciliation-Engine-4F46E5?style=for-the-badge" alt="Identity Reconciliation Engine" />
-  <h1 align="center">BiteSpeed: Identity Reconciliation</h1>
-  <p align="center">
+</div>
+
+<h1 align="center">BiteSpeed: Identity Reconciliation</h1>
+
+<div align="center">
+  <p>
     <strong>A high-performance microservice to seamlessly track, consolidate, and link customer footprints across multiple channels.</strong>
   </p>
   <h3><a href="https://bite-speed-ten-bice.vercel.app/">⮑ View Live Interactive UI Demo</a></h3>

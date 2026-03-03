@@ -1,9 +1,10 @@
 <div align="center">
-  <img src="https://img.shields.io/badge/Identity%20Reconciliation-Engine-<COLOR>?style=for-the-badge&color=4F46E5" alt="Identity Reconciliation Engine" />
+  <img src="https://img.shields.io/badge/Identity%20Reconciliation-Engine-4F46E5?style=for-the-badge" alt="Identity Reconciliation Engine" />
   <h1 align="center">BiteSpeed: Identity Reconciliation</h1>
   <p align="center">
     <strong>A high-performance microservice to seamlessly track, consolidate, and link customer footprints across multiple channels.</strong>
   </p>
+  <h3><a href="https://bite-speed-ten-bice.vercel.app/">⮑ View Live Interactive UI Demo</a></h3>
   
   <p align="center">
     <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-15.0-black?style=flat-square&logo=next.js" alt="Next.js" /></a>
@@ -32,7 +33,7 @@ FluxKart wants to provide a deeply personalized experience for Doc, but his scat
 
 ## 🚀 Live Demo & API Specs
 
-### **[⮑ View Live Interactive UI Demo](https://bite-speed-kqqa.vercel.app/)**
+### **[⮑ View Live Interactive UI Demo](https://bite-speed-ten-bice.vercel.app/)**
 
 The core functionality is exposed via a REST endpoint:
 

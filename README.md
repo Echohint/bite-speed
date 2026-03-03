@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bitespeed Identity Reconciliation
 
-## Getting Started
+This project implements the Identity Reconciliation task for Bitespeed using Next.js 15, Prisma ORM, and TailwindCSS.
 
-First, run the development server:
+## Overview
+It exposes a main REST endpoint `/api/identify` that expects a POST request containing an `email`, a `phoneNumber` (or both) and links identities accordingly to create consolidated cross-channel identities.
 
+The root URL (`/`) provides a clean modern landing page that demonstrates this functionality live via an interactive UI, complete with a mouse-following ambient bubble effect.
+
+## Tech Stack
+- Frontend: Next.js 15, React, TailwindCSS, Lucide-React
+- Backend: Next.js App Router API Routes
+- Database: Neon Postgres
+- ORM: Prisma v6
+
+## Running Locally
+
+1. Create a `.env` file in the root directory and add your Neon DB string:
+   ```
+   DATABASE_URL="postgresql://user:password@host.aws.neon.tech/neondb?sslmode=require"
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+3. Sync the Prisma Schema:
+   ```bash
+   npx prisma db push
+   npx prisma generate
+   ```
+
+4. Run the Dev server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000)
+
+## Deployment
+This project is configured and ready to be deployed to Vercel via Git.
+
+- Ensure `DATABASE_URL` is set in Vercel.
+- The default Vercel configuration for Next.js handles the build (`npm run build`).
+
+## Test Cases 
+
+Use the UI provided on the landing page or test via cURL:
+
+### 1. New Identity (Creates Primary)
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+curl -X POST http://localhost:3000/api/identify \
+  -H "Content-Type: application/json" \
+  -d '{"email": "lorraine@hillvalley.edu", "phoneNumber": "123456"}'
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. Matching Identity, New Info (Creates Secondary)
+```bash
+curl -X POST http://localhost:3000/api/identify \
+  -H "Content-Type: application/json" \
+  -d '{"email": "mcfly@hillvalley.edu", "phoneNumber": "123456"}'
+```
